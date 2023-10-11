@@ -69,4 +69,4 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run("https://0.0.0.0:9999");
+app.Run("http://0.0.0.0:9999");
