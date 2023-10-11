@@ -27,3 +27,24 @@ module "ecr" {
   source = "./modules/ecr"
   tags   = var.tags
 }
+
+module "network" {
+  source          = "./modules/network"
+  vpc_cidr_block  = var.vpc_cidr
+  tags            = var.tags
+  public_subnets  = var.public_subnets
+  private_subnets = var.private_subnets
+}
+
+module "rds" {
+  source         = "./modules/rds"
+  tags           = var.tags
+  subnet_ids     = module.network.private_subnet_ids
+  vpc_id         = module.network.vpc_id
+  vpc_cidr_block = module.network.vpc_cidr_block
+  db_name        = var.db_name
+  db_username    = var.db_username
+
+  depends_on = [module.network]
+}
+
