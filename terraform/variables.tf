@@ -40,3 +40,13 @@ variable "app_port" {
 variable "domain" {
   default = "softserve-demo.pp.ua"
 }
+
+# ecs
+
+variable "app_name" {
+  default = "apple-store"
+}
+
+variable "image_tag" {
+  default = "latest"
+}

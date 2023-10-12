@@ -27,3 +27,17 @@ module "ecr" {
   source = "./modules/ecr"
   tags   = var.tags
 }
+
+module "ecs" {
+  source             = "./modules/ecs"
+  tags               = var.tags
+  vpc_id             = module.network.vpc_id
+  vpc_cidr           = var.vpc_cidr
+  app_name           = var.app_name
+  env                = var.env
+  app_port           = var.app_port
+  ecr_repository_url = module.ecr.ecr_repository_url
+  image_tag          = var.image_tag
+  private_subnet_ids = module.network.private_subnet_ids
+  lb_target_group    = module.lb.target_group_arn
+}
