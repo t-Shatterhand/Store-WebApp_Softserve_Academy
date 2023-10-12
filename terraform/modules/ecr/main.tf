@@ -17,20 +17,21 @@ data "aws_iam_policy_document" "ecr" {
     }
 
     actions = [
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:BatchGetImage",
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:PutImage",
-      "ecr:InitiateLayerUpload",
-      "ecr:UploadLayerPart",
-      "ecr:CompleteLayerUpload",
-      "ecr:DescribeRepositories",
-      "ecr:GetRepositoryPolicy",
-      "ecr:ListImages",
-      "ecr:DeleteRepository",
-      "ecr:BatchDeleteImage",
-      "ecr:SetRepositoryPolicy",
-      "ecr:DeleteRepositoryPolicy",
+      "ecr-public:GetAuthorizationToken",
+      "ecr-public:GetDownloadUrlForLayer",
+      "ecr-public:BatchGetImage",
+      "ecr-public:BatchCheckLayerAvailability",
+      "ecr-public:PutImage",
+      "ecr-public:InitiateLayerUpload",
+      "ecr-public:UploadLayerPart",
+      "ecr-public:CompleteLayerUpload",
+      "ecr-public:DescribeRepositories",
+      "ecr-public:GetRepositoryPolicy",
+      "ecr-public:ListImages",
+      "ecr-public:DeleteRepository",
+      "ecr-public:BatchDeleteImage",
+      "ecr-public:SetRepositoryPolicy",
+      "ecr-public:DeleteRepositoryPolicy",
     ]
   }
 }

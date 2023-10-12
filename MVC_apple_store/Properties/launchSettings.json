@@ -4,14 +4,10 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "DB_HOST": "db-demo-3.cqusaibwftc3.us-east-1.rds.amazonaws.com",
-        "DB_NAME": "testDB1",
-        "DB_PASS": "AxNarJUwe72DekawT2CX",
-        "DB_USER": "admin"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7151;http://localhost:5151"
+      "applicationUrl": "http://0.0.0.0:9999;http//0.0.0.0:9998"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -25,7 +21,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:33630",
+      "applicationUrl": "http://+:33630",
       "sslPort": 44350
     }
   }
