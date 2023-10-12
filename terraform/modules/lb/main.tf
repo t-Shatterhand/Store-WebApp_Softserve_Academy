@@ -9,7 +9,7 @@ resource "aws_lb" "lb" {
 resource "aws_lb_target_group" "app_tg" {
   name        = var.tg_name
   port        = var.app_port
-  protocol    = "HTTPS"
+  protocol    = "HTTP"
   vpc_id      = var.vpc_id
   target_type = "ip"
 }
