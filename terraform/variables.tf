@@ -32,7 +32,7 @@ locals {
 }
 
 variable "app_port" {
-  default = 7151
+  default = 9999
 }
 
 # https
