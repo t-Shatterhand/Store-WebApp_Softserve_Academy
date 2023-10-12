@@ -21,8 +21,8 @@ resource "aws_ecs_task_definition" "task_def" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = 256
   memory                   = 512
-  execution_role_arn       = "" # <----- place roles here
-  task_role_arn            = "" # <----- 
+  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
+  task_role_arn            = aws_iam_role.ecs_task_iam_role.arn
   container_definitions    = data.template_file.app.rendered
 }
 
