@@ -46,8 +46,8 @@ resource "aws_db_instance" "default_mssql" {
   engine_version            = "12.00.4422.0.v1"
   instance_class            = var.rds_instance_class
   multi_az                  = var.rds_multi_az
-  username                  = "demo"
-  password                  = var.database_master_password
+  username                  = var.mssql_admin_username
+  password                  = var.mssql_admin_password
   vpc_security_group_ids    = ["${aws_security_group.rds_mssql_security_group.id}", "${aws_security_group.rds_mssql_security_group_vpn.id}"]
   db_subnet_group_name      = aws_db_subnet_group.default_rds_mssql.id
   backup_retention_period   = 3
@@ -55,13 +55,12 @@ resource "aws_db_instance" "default_mssql" {
   final_snapshot_identifier = "${var.environment}-mssql-final-snapshot"
 }
 
-resource "aws_ssm_parameter" "secret" {
-  name        = "/production/database/password/master"
-  description = "The parameter description"
-  type        = "SecureString"
-  value       = var.database_master_password
+// Identifier of the mssql DB instance.
+output "mssql_id" {
+  value = aws_db_instance.default_mssql.id
+}
 
-  tags = {
-    environment = "production"
-  }
+// Address of the mssql DB instance.
+output "mssql_address" {
+  value = aws_db_instance.default_mssql.address
 }

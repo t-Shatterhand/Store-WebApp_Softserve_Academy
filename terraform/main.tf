@@ -36,15 +36,13 @@ module "network" {
   private_subnets = var.private_subnets
 }
 
-module "rds" {
-  source         = "./modules/rds"
-  tags           = var.tags
-  subnet_ids     = module.network.private_subnet_ids
-  vpc_id         = module.network.vpc_id
-  vpc_cidr_block = module.network.vpc_cidr_block
-  db_name        = var.db_name
-  db_username    = var.db_username
-
-  depends_on = [module.network]
+module "rds-sqlserver" {
+  source               = "./modules/rds"
+  environment          = var.environment
+  mssql_admin_username = var.sqlserver_db_admin_user
+  mssql_admin_password = var.sqlserver_db_admin_password
+  vpc_id               = data.aws_vpc.vpc.id
+  vpc_subnet_ids       = ["${var.vpc_private_subnet_ids}"]
 }
+
 

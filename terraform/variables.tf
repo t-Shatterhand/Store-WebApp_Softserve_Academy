@@ -41,30 +41,13 @@ variable "domain" {
   default = "softserve-demo.pp.ua"
 }
 
-variable "tags" {
-  default = {
-    Env = "test"
-  }
+variable "environment" {
+  default = "demo-3"
 }
 
-variable "public_subnets" {
-  type    = list(string)
-  default = ["10.0.3.0/24", "10.0.4.0/24"]
-}
+variable "sqlserver_db_admin_user" {}
 
-variable "private_subnets" {
-  type    = list(string)
-  default = ["10.0.5.0/24", "10.0.6.0/24"]
-}
+variable "sqlserver_db_admin_password" {}
 
-variable "vpc_cidr" {
-  default = "10.0.0.0/16"
-}
+variable "vpc_private_subnet_ids" {}
 
-variable "db_name" {
-  default = "appledb"
-}
-
-variable "db_username" {
-  default = "admin"
-}
