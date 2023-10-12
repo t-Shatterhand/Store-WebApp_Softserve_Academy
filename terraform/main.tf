@@ -36,7 +36,7 @@ module "ecs" {
   app_name           = var.app_name
   env                = var.env
   app_port           = var.app_port
-  ecr_repository_url = module.ecr.ecr_repository_url
+  ecr_repository_url = module.ecr.ecr_url
   image_tag          = var.image_tag
   private_subnet_ids = module.network.private_subnet_ids
   lb_target_group    = module.lb.target_group_arn
