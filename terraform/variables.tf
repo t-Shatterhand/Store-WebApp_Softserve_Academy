@@ -40,3 +40,14 @@ variable "app_port" {
 variable "domain" {
   default = "softserve-demo.pp.ua"
 }
+
+variable "environment" {
+  default = "demo-3"
+}
+
+variable "sqlserver_db_admin_user" {}
+
+variable "sqlserver_db_admin_password" {}
+
+variable "vpc_private_subnet_ids" {}
+

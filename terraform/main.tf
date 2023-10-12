@@ -27,3 +27,22 @@ module "ecr" {
   source = "./modules/ecr"
   tags   = var.tags
 }
+
+module "network" {
+  source          = "./modules/network"
+  vpc_cidr_block  = var.vpc_cidr
+  tags            = var.tags
+  public_subnets  = var.public_subnets
+  private_subnets = var.private_subnets
+}
+
+module "rds-sqlserver" {
+  source               = "./modules/rds"
+  environment          = var.environment
+  mssql_admin_username = var.sqlserver_db_admin_user
+  mssql_admin_password = var.sqlserver_db_admin_password
+  vpc_id               = data.aws_vpc.vpc.id
+  vpc_subnet_ids       = ["${var.vpc_private_subnet_ids}"]
+}
+
+
