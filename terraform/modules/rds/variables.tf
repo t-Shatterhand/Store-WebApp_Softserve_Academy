@@ -1,50 +1,41 @@
-// Environment name, used as prefix to name resources.
-variable "environment" {}
-
-// The allocated storage in gigabytes.
-variable "rds_allocated_storage" {
-  default = "250"
+variable "db_port" {
+    type = string
+    default = "5432"
 }
 
-// The instance type of the RDS instance.
-variable "rds_instance_class" {
-  default = "db.m4.large"
+variable "environment" {
+    type = string
+    default = "dev"
 }
 
-// Specifies if the RDS instance is multi-AZ.
-variable "rds_multi_az" {
-  default = "false"
+variable "db_master_username" {
+    type = string
+    default = "master"
 }
 
-// Username for the administrator DB user.
-variable "mssql_admin_username" {}
-
-// Password for the administrator DB user.
-variable "mssql_admin_password" {}
-
-// A list of VPC subnet identifiers.
-variable "vpc_subnet_ids" {
-  type = list(string)
+variable "db_storage_type" {
+    type = string
+    default = "gp2"
 }
 
-// The VPC identifier where security groups are going to be applied.
-variable "vpc_id" {}
-
-// List of CIDR blocks that will be granted to access to mssql instance.
-variable "vpc_cidr_blocks" {
-  type    = list(string)
-  default = []
+variable "db_instance_class" {
+    type = string
+    default = "db.t3.micro"
 }
 
-// Additional list of CIDR blocks that will be granted to access to mssql instance.
-// These list is meant to be used in the vpn security group.
-variable "vpc_cidr_blocks_vpn" {
-  type    = list(string)
-  default = []
+variable "db_name" {
+    type = string
+    default = "demo"
 }
 
-// Determines whether a final DB snapshot is created before the DB instance is deleted.
-variable "skip_final_snapshot" {
-  type    = string
-  default = "false"
+variable "subnet_ids" {
+    type = list(string)
+}
+
+variable "vpc_id" {
+    type = string
+}
+
+variable "vpc_cidr_block" {
+    type = string
 }
