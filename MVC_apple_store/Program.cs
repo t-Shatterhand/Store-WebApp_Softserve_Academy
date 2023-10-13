@@ -9,12 +9,10 @@ using BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 string dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-string dbName = Environment.GetEnvironmentVariable("DB_NAME");
 string dbPass = Environment.GetEnvironmentVariable("DB_PASS");
 string dbUser = Environment.GetEnvironmentVariable("DB_USER");
-
 //string connectionString = builder.Configuration.GetConnectionString("RemoteDB");
-string connectionString = $"Data Source={dbHost};Initial Catalog={dbName};Persist Security Info=True;User ID={dbUser};Password={dbPass}";
+string connectionString = $"Data Source={dbHost};Initial Catalog=app;Persist Security Info=True;User ID={dbUser};Password={dbPass}";
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

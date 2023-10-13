@@ -1,0 +1,12 @@
+- name: Create db on a rds instance
+  hosts: localhost
+  connection: local
+  vars_files:
+    - rds.vars
+  tasks:
+    - name: Run module for db creation
+      community.general.mssql_db:
+        login_host: "{{ rds_db_host }}"
+        login_password: "{{ rds_db_password }}"
+        login_user: "{{ rds_db_user }}"
+        name: app

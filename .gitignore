@@ -12,6 +12,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+terraform/rds.vars
 
 # Mono auto generated files
 mono_crash.*
