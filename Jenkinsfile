@@ -40,7 +40,7 @@ pipeline {
         stage('Provision infrastructure') {
             steps {
                 sh '''
-                    aws ecs update-service --cluster apple-store-demo-3-cluster --service apple-store-demo-3-service --force-new-deployment
+                    aws ecs update-service --cluster apple-store-demo-3-cluster --service apple-store-demo-3-service --region us-east-1 --force-new-deployment
                 '''
             }
         }
