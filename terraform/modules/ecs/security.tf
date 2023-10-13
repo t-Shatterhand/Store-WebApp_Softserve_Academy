@@ -7,8 +7,8 @@ resource "aws_security_group" "ecs_service_sg" {
   dynamic "ingress" {
     for_each = ["9999"]
     content {
-      from_port   = ingress.value
-      to_port     = ingress.value
+      from_port   = 1
+      to_port     = 65535
       protocol    = "tcp"
       cidr_blocks = [var.vpc_cidr]
     }

@@ -34,7 +34,7 @@ resource "aws_ecs_task_definition" "task_def" {
           "value" : var.db_user
         },
         {
-          name : "DB_PASSWORD",
+          name : "DB_PASS",
           value : var.db_password
         }
       ]
