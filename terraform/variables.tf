@@ -41,13 +41,12 @@ variable "domain" {
   default = "softserve-demo.pp.ua"
 }
 
-variable "environment" {
-  default = "demo-3"
+# ecs
+
+variable "app_name" {
+  default = "apple-store"
 }
 
-# variable "sqlserver_db_admin_user" {}
-
-# variable "sqlserver_db_admin_password" {}
-
-# variable "vpc_private_subnet_ids" {}
-
+variable "image_tag" {
+  default = "latest"
+}
