@@ -3,27 +3,43 @@ resource "aws_ecs_cluster" "cluster" {
   tags = merge(var.tags, { "Name" = "demo-3-cluster" })
 }
 
-data "template_file" "app" {
-  template = file(var.taskdef_template)
-
-  vars = {
-    app_name  = var.app_name
-    env       = var.env
-    app_port  = var.app_port
-    image_tag = var.image_tag
-    app_image = local.app_image
-  }
-}
-
 resource "aws_ecs_task_definition" "task_def" {
   family                   = "${var.app_name}-${var.env}-td"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = 256
-  memory                   = 512
+  cpu                      = 512
+  memory                   = 1024
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   task_role_arn            = aws_iam_role.ecs_task_iam_role.arn
-  container_definitions    = data.template_file.app.rendered
+  container_definitions = jsonencode([
+    {
+      name : "${var.app_name}-${var.env}-app"
+      image : local.app_image
+      cpu : 512,
+      memory : 1024,
+      networkMode : "awsvpc",
+      portMappings : [
+        {
+          containerPort : var.app_port,
+          hostPort : var.app_port
+        }
+      ]
+      environment : [
+        {
+          name : "DB_HOST",
+          value : var.db_host
+        },
+        {
+          "name" : "DB_USER",
+          "value" : var.db_user
+        },
+        {
+          name : "DB_PASSWORD",
+          value : var.db_password
+        }
+      ]
+    }
+  ])
 }
 
 resource "aws_ecs_service" "service" {

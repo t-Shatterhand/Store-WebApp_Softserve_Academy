@@ -50,13 +50,3 @@ variable "app_name" {
 variable "image_tag" {
   default = "latest"
 }
-
-variable "environment" {
-  default = "demo-3"
-}
-
-# variable "sqlserver_db_admin_user" {}
-
-# variable "sqlserver_db_admin_password" {}
-
-# variable "vpc_private_subnet_ids" {}

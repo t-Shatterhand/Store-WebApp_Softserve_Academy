@@ -45,6 +45,9 @@ module "ecs" {
   image_tag          = var.image_tag
   private_subnet_ids = module.network.private_subnet_ids
   lb_target_group    = module.lb.target_group_arn
+  db_host            = module.rds.rds_hostname
+  db_user            = module.rds.rds_username
+  db_password        = data.aws_ssm_parameter.db_pass.value
 }
 
 module "rds" {
