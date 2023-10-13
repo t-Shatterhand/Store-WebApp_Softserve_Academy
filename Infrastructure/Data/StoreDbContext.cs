@@ -13,11 +13,10 @@ namespace DataAccess.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-            string dbName = Environment.GetEnvironmentVariable("DB_NAME");
             string dbPass = Environment.GetEnvironmentVariable("DB_PASS");
             string dbUser = Environment.GetEnvironmentVariable("DB_USER");
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer($"Data Source={dbHost};Initial Catalog={dbName};Persist Security Info=True;User ID={dbUser};Password={dbPass}");
+            optionsBuilder.UseSqlServer($"Data Source={dbHost};Initial Catalog=app;Persist Security Info=True;User ID={dbUser};Password={dbPass}");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
