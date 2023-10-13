@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-/*
         stage('Clone repository') {
             steps {
                 sh '''
@@ -11,7 +10,6 @@ pipeline {
                 '''
             }
         }
-*/
         stage('Create EC Registry') {
             steps {
                 sh '''
@@ -39,16 +37,13 @@ pipeline {
                 '''
             }
         }
-/*
         stage('Provision infrastructure') {
             steps {
                 sh '''
-                    cd ~/Store-WebApp_Softserve_Academy/terraform/
-                    terraform apply -auto-approve
+                    aws ecs update-service --cluster apple-store-demo-3-cluster --service apple-store-demo-3-service --force-new-deployment
                 '''
             }
         }
-*/
         stage("Cleaning build environment"){
             steps{
                 sh '''
@@ -56,7 +51,6 @@ pipeline {
                 '''
             }
         }
-/*
         stage('Destroy') {
             steps {
                 sh '''
@@ -64,7 +58,6 @@ pipeline {
                 '''
             }
         }
-*/
         
     }
 }
