@@ -29,11 +29,19 @@ resource "aws_security_group" "db_allow" {
     vpc_id      = var.vpc_id
 
     ingress {
-        description      = "Allow only traffic on port 5432 for VPC connections"
+        description      = "Allow only traffic on port 1433 for Jenkins master node"
         from_port        = 1433
         to_port          = 1433
         protocol         = "tcp"
-        cidr_blocks      = ["0.0.0.0/0"]
+        cidr_blocks      = ["52.73.33.176/32"]
+    }
+
+    ingress {
+        description      = "Allow only traffic on port 1433 for VPC connections"
+        from_port        = 1433
+        to_port          = 1433
+        protocol         = "tcp"
+        cidr_blocks      = [var.vpc_cidr_block]
     }
 
     egress {
